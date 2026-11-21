@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hồ cá vui nhộn</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="ho-ca" aria-label="Ho ca vui nhon">
+        <div class="nut">
+            <button class="nut-doi-nen" type="button" onclick="doiNen()">Đổi nền 1/4</button>
+            <button class="nut-nhac" type="button" onclick="batTatNhac()">Bật nhạc</button>
+        </div>
+        <div class="sv ca-map"><img src="shark.png" alt="Cá mập"></div>
+        <div class="sv rua-bien"><img src="turtle.png" alt="Rùa biển"></div>
+        <div class="sv dan-ca-vang"><img src="goldFishSchool.png" alt="Đàn cá vàng"></div>
+        <div class="sv dan-ca-nho"><img src="faintSchool.png" alt="Đàn cá nhỏ"></div>
+        <div class="tl tho-lan-mot"><img src="diver1.png" alt="Thợ lặn"></div>
+        <div class="tl tho-lan-hai"><img src="diver2.png" alt="Thợ lặn"></div>
+        <div class="tl tho-lan-ba"><img src="diver3.png" alt="Thợ lặn"></div>
+    </main>
+    <audio class="bai-hat" src="bai ca tom ca.mp3" loop></audio>
+    <script>
+        var soNen = 1;
+        var hoCa = document.querySelector(".ho-ca");
+        var nutNen = document.querySelector(".nut-doi-nen");
+        var nutNhac = document.querySelector(".nut-nhac");
+        var baiHat = document.querySelector(".bai-hat");
+
+        function hienNen() {
+            hoCa.style.backgroundImage = "url('day bien " + soNen + ".jpg')";
+            hoCa.style.backgroundSize = "cover";
+            hoCa.style.backgroundPosition = "center";
+            nutNen.textContent = "Đổi nền " + soNen + "/4";
+        }
+
+        hienNen();
+
+        function doiNen() {
+            soNen = soNen + 1;
+            if (soNen > 4) {
+                soNen = 1;
+            }
+            hienNen();
+        }
+
+        function batTatNhac() {
+            if (baiHat.paused == true) {
+                baiHat.play().then(function () {
+                    nutNhac.textContent = "Tắt nhạc";
+                })
+            } else {
+                baiHat.pause();
+                nutNhac.textContent = "Bật nhạc";
+            }
+        }
+    </script>
+</body>
+</html>
